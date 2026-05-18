@@ -24,6 +24,7 @@
             position: fixed;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             width: 220px;
+            z-index: 1000;
         }
         .sidebar .nav-link {
             color: #4E5969;
@@ -66,31 +67,41 @@
             color: #4E5969;
             font-weight: 500;
         }
+        
+        /* Tambahan CSS khusus untuk merampingkan dan meluruskan tabel */
+        .report-table-container {
+            max-width: 600px; /* Mengatur batas lebar tabel agar ramping */
+        }
+        .fixed-table {
+            table-layout: fixed; /* Memaksa kolom mengikuti ukuran persentase */
+            width: 100%;
+        }
+        /* Membagi porsi lebar kolom agar semua tabel sejajar lurus */
+        .fixed-table th:nth-child(1), .fixed-table td:nth-child(1) { width: 50%; }
+        .fixed-table th:nth-child(2), .fixed-table td:nth-child(2) { width: 25%; }
+        .fixed-table th:nth-child(3), .fixed-table td:nth-child(3) { width: 25%; }
     </style>
 </head>
 <body>
 
-<!-- Sidebar -->
 <div class="sidebar p-3">
     <div class="text-center mb-4 mt-2">
         <h5 class="text-primary fw-bold">🚛 Logistik App</h5>
         <p class="text-muted small mb-0">Monitoring Bongkar Muat</p>
     </div>
-<nav class="nav flex-column">
-    <a class="nav-link active" href="index.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
-    <a class="nav-link" href="register.html"><i class="bi bi-truck"></i> Register</a>
-    <a class="nav-link" href="tat.html"><i class="bi bi-clock-history"></i> TAT</a>
-    <a class="nav-link" href="status.html"><i class="bi bi-list-check"></i> Status</a>
-    <a class="nav-link" href="putaway.html"><i class="bi bi-box-seam"></i> Putaway</a>
-    <a class="nav-link" href="pallet.html"><i class="bi bi-grid-3x3-gap"></i> Pallet</a>
-    <a class="nav-link" href="user.html"><i class="bi bi-people"></i> User</a>
-    <a class="nav-link" href="report.html"><i class="bi bi-file-earmark-bar-graph"></i> Summary</a>
-</nav>
+    <nav class="nav flex-column">
+        <a class="nav-link active" href="index.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a class="nav-link" href="register.html"><i class="bi bi-truck"></i> Register</a>
+        <a class="nav-link" href="tat.html"><i class="bi bi-clock-history"></i> TAT</a>
+        <a class="nav-link" href="status.html"><i class="bi bi-list-check"></i> Status</a>
+        <a class="nav-link" href="putaway.html"><i class="bi bi-box-seam"></i> Putaway</a>
+        <a class="nav-link" href="pallet.html"><i class="bi bi-grid-3x3-gap"></i> Pallet</a>
+        <a class="nav-link" href="user.html"><i class="bi bi-people"></i> User</a>
+        <a class="nav-link" href="report.html"><i class="bi bi-file-earmark-bar-graph"></i> Summary</a>
+    </nav>
 </div>
 
-<!-- Main Content -->
 <div class="main-content">
-    <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h4 class="mb-1 fw-semibold">Summary In/Out DC Liquid</h4>
@@ -102,108 +113,107 @@
         </div>
     </div>
 
-<div class="card mb-4">
-  <div class="card-header bg-white">
-    <h5 class="fw-semibold"><i class="bi bi-file-earmark-bar-graph me-2"></i> Summary Report</h5>
-    <p class="text-muted mb-0">
-      <div class="row mb-1">
-        <label class="col-sm-2 col-form-label">Occupancy</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control" placeholder="90%">
+    <div class="card mb-4">
+        <div class="card-header bg-white py-3">
+            <h5 class="fw-semibold mb-3"><i class="bi bi-file-earmark-bar-graph me-2"></i> Summary Report</h5>
+            
+            <div class="row mb-2 align-items-center">
+                <label class="col-sm-2 col-form-label">Occupancy</label>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" placeholder="90%">
+                </div>
+            </div>
+            
+            <div class="row mb-1 align-items-center">
+                <label class="col-sm-2 col-form-label">Tanggal</label>
+                <div class="col-sm-3">
+                    <input type="datetime-local" class="form-control">
+                </div>
+            </div>
         </div>
-      </div>
-    </p>
-    <p class="mb-0">
-      <div class="row mb-1">
-        <label class="col-sm-2 col-form-label">Tanggal</label>
-        <div class="col-sm-3">
-         
-          <input type="datetime-local" class="form-control">
-        </div>
-      </div>
-    </p>
 
-  <div class="card-body">
+        <div class="card-body">
+            <div class="report-table-container">
 
-    <!-- Inbound -->
-    <h6 class="fw-bold text-warning mb-2">Inbound</h6>
-    <div class="table-responsive mb-3">
-      <table class="table table-bordered align-middle">
-        <thead class="table-light">
-          <tr>
-            <th>Truck/WPP</th>
-            <th>Pallet</th>
-            <th>Cs</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Production</td><td>987</td><td>23987</td></tr>
-          <tr><td>ASP</td><td>2</td><td>543</td></tr>
-          <tr><td>JKT</td><td>1</td><td>653</td></tr>
-          <tr><td>Jaya Mix</td><td>1</td><td>234</td></tr>
-          <tr class="table-secondary fw-bold"><td>Total</td><td>4</td><td>1430</td></tr>
-        </tbody>
-      </table>
+                <h6 class="fw-bold text-warning mb-2">Inbound</h6>
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered align-middle fixed-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Truck/WPP</th>
+                                <th>Pallet</th>
+                                <th>Cs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Production</td><td>987</td><td>23987</td></tr>
+                            <tr><td>ASP</td><td>2</td><td>543</td></tr>
+                            <tr><td>JKT</td><td>1</td><td>653</td></tr>
+                            <tr><td>Jaya Mix</td><td>1</td><td>234</td></tr>
+                            <tr class="table-secondary fw-bold"><td>Total</td><td>4</td><td>1430</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h6 class="fw-bold text-warning mb-2">Outbound</h6>
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered align-middle fixed-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Truck</th>
+                                <th>Pallet</th>
+                                <th>Cs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Shuttle QI</td><td>26</td><td>49324</td></tr>
+                            <tr><td>Shuttle Release</td><td>-</td><td>-</td></tr>
+                            <tr><td>Big Mana</td><td>-</td><td>-</td></tr>
+                            <tr><td>Direct</td><td>15</td><td>43564</td></tr>
+                            <tr class="table-secondary fw-bold"><td>Total</td><td>41</td><td>92888</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h6 class="fw-bold text-warning mb-2">Stock Pallet</h6>
+                <div class="table-responsive mb-4">
+                    <table class="table table-bordered align-middle fixed-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Cover Stock</th>
+                                <th>Pallet Receive</th>
+                                <th>Pallet Free</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Pallet Stock</td><td>546</td><td>1234</td></tr>
+                            <tr><td>Staging</td><td>-</td><td>2345</td></tr>
+                            <tr class="table-secondary fw-bold"><td>Total</td><td>546</td><td>3579</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h6 class="fw-bold text-warning mb-2">Putaway</h6>
+                <div class="table-responsive">
+                    <table class="table table-bordered align-middle fixed-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Target</th>
+                                <th>Pallet</th>
+                                <th>Cs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Putaway TO HR</td><td>234</td><td>765</td></tr>
+                            <tr><td>Replanish</td><td>32</td><td>345</td></tr>
+                            <tr class="table-secondary fw-bold"><td>Total</td><td>266</td><td>1110</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div> </div>
     </div>
-
-    <!-- Outbound -->
-    <h6 class="fw-bold text-warning mb-2">Outbound</h6>
-    <div class="table-responsive mb-3">
-      <table class="table table-bordered align-middle">
-        <thead class="table-light">
-          <tr>
-            <th>Truck</th>
-            <th>Pallet</th>
-            <th>Cs</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Shuttle QI</td><td>26</td><td>49324</td></tr>
-          <tr><td>Shuttle Release</td><td>-</td><td>-</td></tr>
-          <tr><td>Big Mana</td><td>-</td><td>-</td></tr>
-          <tr><td>Direct</td><td>15</td><td>43564</td></tr>
-          <tr class="table-secondary fw-bold"><td>Total</td><td>41</td><td>92888</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Stock Pallet -->
-    <h6 class="fw-bold text-warning mb-2">Stock Pallet</h6>
-    <div class="table-responsive mb-3">
-      <table class="table table-bordered align-middle">
-        <thead class="table-light">
-          <tr>
-            <th>Cover Stock</th>
-            <th>Pallet Receive</th>
-            <th>Pallet Free</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Pallet Stock</td><td>546</td><td>1234</td></tr>
-          <tr><td>Staging</td><td>-</td><td>2345</td></tr>
-          <tr class="table-secondary fw-bold"><td>Total</td><td>546</td><td>3579</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Putaway -->
-    <h6 class="fw-bold text-warning mb-2">Putaway</h6>
-    <div class="table-responsive">
-      <table class="table table-bordered align-middle">
-        <thead class="table-light">
-          <tr>
-            <th>Target</th>
-            <th>Pallet</th>
-            <th>Cs</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Putaway TO HR</td><td>234</td><td>765</td></tr>
-          <tr><td>Replanish</td><td>32</td><td>345</td></tr>
-          <tr class="table-secondary fw-bold"><td>Total</td><td>266</td><td>1110</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-  </div>
 </div>
+
+</body>
+</html>
