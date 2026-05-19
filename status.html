@@ -93,7 +93,7 @@
     <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h4 class="mb-1 fw-semibold">Status Truck</h4>
+            <h5 class="mb-0 fw-semibold"><i class="bi bi-list-check me-2"></i> Update Status Proses</h5>
             <p class="text-muted mb-0">Pantau proses bongkar muat truk secara real-time</p>
         </div>
         <div class="d-flex gap-2">
@@ -105,9 +105,30 @@
 
        <!-- STATUS PROSES -->
     <div class="card" id="status">
-        <div class="card-header bg-white py-3">
-            <h5 class="mb-0 fw-semibold"><i class="bi bi-list-check me-2"></i> Update Status Proses</h5>
-        </div>
+        <!--div class="card-header bg-white py-3" -->
+            <!-- h5 class="mb-0 fw-semibold"><i class="bi bi-list-check me-2"></i> Update Status Proses</h5 -->
+            <div class="row mb-2 align-items-center">
+                <label class="col-sm-2 col-form-label">Tanggal</label>
+                <div class="col-sm-3">
+                    <input type="datetime-local" class="form-control">
+                </div>
+            </div>
+          <div>  
+            <div class="row mb-1 align-items-center">
+                <label class="col-sm-2 col-form-label">Shift</label>
+                <div class="col-sm-2">
+                                <select class="form-select form-select-sm">
+                                    <option>Malam</option>
+                                    <option selected>Pagi</option>
+                                    <option>Siang</option>
+                                </select>
+                </div>
+            </div>
+	 </div>
+      </div>
+
+    <!-- STATUS PROSES -->
+    <div class="card" id="status">
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-hover">
@@ -119,6 +140,9 @@
                             <th>Transp</th>
                             <th>Tujuan</th>
                             <th>Shipment</th>
+                            <th>Channel</th>
+                            <th>Status</th>
+                            <th>Muatan</th>
                             <th>Status Saat Ini</th>
                             <th>Ubah Status</th>
                         </tr>
@@ -127,10 +151,13 @@
                         <tr>
                             <td>Pagi</td>
                             <th>Anton</th>
-                            <td>B 1234 ABC</td>    
+                            <td>B1234ABC</td>    
                             <td>SIL</td>
                             <td>IDA352</td>
                             <th>4517531874</th>
+                            <th>STO</th>
+                            <th>Release</th>
+                            <th>Direct</th>
                             <td><span class="status-badge bg-warning bg-opacity-10 text-warning">Sedang Bongkar</span></td>
                             <td>
                                 <select class="form-select form-select-sm">
@@ -144,10 +171,13 @@
                         <tr>
                             <td>Pagi</td>
                             <th>Anton</th>
-                            <td>B 5467 TUF</td>    
+                            <td>B5467TUF</td>    
                             <td>BSBL</td>
                             <td>IDA098</td>
                             <th>4518457132</th>
+                            <th>MT</th>
+                            <th>Release</th>
+                            <th>Direct</th>
                             <td><span class="status-badge bg-success bg-opacity-10 text-success">Selesai</span></td>
                             <td>
                                 <select class="form-select form-select-sm">
