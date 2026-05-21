@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitoring Truck Bongkar Muat</title>
+    <title>Monitoring Truck Bongkar Muat - TAT</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <style>
@@ -56,44 +56,31 @@
             font-weight: 500;
             color: #1D2129;
         }
-        .status-badge {
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 500;
-        }
-        .table th {
-            color: #4E5969;
-            font-weight: 500;
-        }
     </style>
 </head>
 <body>
 
-<!-- Sidebar -->
 <div class="sidebar p-3">
     <div class="text-center mb-4 mt-2">
         <h5 class="text-primary fw-bold">🚛 Logistik App</h5>
         <p class="text-muted small mb-0">Monitoring Bongkar Muat</p>
     </div>
-<nav class="nav flex-column">
-    <a class="nav-link active" href="index.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
-    <a class="nav-link" href="register.html"><i class="bi bi-truck"></i> Register</a>
-    <a class="nav-link" href="tat.html"><i class="bi bi-clock-history"></i> TAT</a>
-    <a class="nav-link" href="status.html"><i class="bi bi-list-check"></i> Status</a>
-    <a class="nav-link" href="putaway.html"><i class="bi bi-box-seam"></i> Putaway</a>
-    <a class="nav-link" href="pallet.html"><i class="bi bi-grid-3x3-gap"></i> Pallet</a>
-    <a class="nav-link" href="user.html"><i class="bi bi-people"></i> User</a>
-    <a class="nav-link" href="report.html"><i class="bi bi-file-earmark-bar-graph"></i> Summary</a>
-</nav>
+    <nav class="nav flex-column">
+        <a class="nav-link" href="index.html"><i class="bi bi-speedometer2"></i> Dashboard</a>
+        <a class="nav-link" href="register.html"><i class="bi bi-truck"></i> Register</a>
+        <a class="nav-link active" href="tat.html"><i class="bi bi-clock-history"></i> TAT</a>
+        <a class="nav-link" href="status.html"><i class="bi bi-list-check"></i> Status</a>
+        <a class="nav-link" href="putaway.html"><i class="bi bi-box-seam"></i> Putaway</a>
+        <a class="nav-link" href="pallet.html"><i class="bi bi-grid-3x3-gap"></i> Pallet</a>
+        <a class="nav-link" href="user.html"><i class="bi bi-people"></i> User</a>
+        <a class="nav-link" href="report.html"><i class="bi bi-file-earmark-bar-graph"></i> Summary</a>
+    </nav>
 </div>
 
-<!-- Main Content -->
 <div class="main-content">
-    <!-- Header -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-            <h4 class="mb-1 fw-semibold">Input Progres Loading Data Truck</h4>
+            <h4 class="mb-1 fw-semibold">Selamat Datang, Admin</h4>
             <p class="text-muted mb-0">Pantau proses bongkar muat truk secara real-time</p>
         </div>
         <div class="d-flex gap-2">
@@ -102,134 +89,189 @@
         </div>
     </div>
 
-<!-- TAT FORM -->
-<div class="card" id="tat">
-  <div class="card-header bg-white py-3">
-    <h5 class="mb-0 fw-semibold"><i class="bi bi-clock-history me-2"></i> Pencatatan TAT (Waktu Proses)</h5>
-  </div>
-  <div class="card-body">
-    <form>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">Tanggal</label>
-        <div class="col-sm-3">
-          <input type="datetime-local" class="form-control">
+    <div class="card" id="tat">
+        <div class="card-header bg-white py-3">
+            <h5 class="mb-0 fw-semibold"><i class="bi bi-clock-history me-2"></i> Pencatatan TAT (Waktu Proses)</h5>
         </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">No. Polisi</label>
-        <div class="col-sm-2">
-          <select class="form-select">
-            <option>B 1234 ABC</option>
-            <option>B 5678 DEF</option>
-          </select>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">User</label>
-        <div class="col-sm-3">
-          <input type="text" class="form-control" placeholder="Nama Admin">
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">Transporter</label>
-        <div class="col-sm-3">
-          <input type="text" class="form-control" placeholder="">
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">Tujuan</label>
-        <div class="col-sm-3">
-          <input type="text" class="form-control" placeholder="">
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">Shipment</label>
-        <div class="col-sm-3">
-          <input type="text" class="form-control" placeholder="4519403296">
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">Qty Cs</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control" placeholder="Jumlah Karton">
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">Qty Pallet</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control" placeholder="Jumlah Pallet">
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">No. Docket</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control" placeholder="3117465">
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">No. Seal</label>
-        <div class="col-sm-2">
-          <input type="text" class="form-control" placeholder="567/568/568">
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">Type Order</label>
-        <div class="col-sm-2">
-          <select class="form-select">
-            <option>MT</option>
-            <option>SO</option>
-            <option>STO</option>
-            <option>STO/JKT</option>
-          </select>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">Status</label>
-        <div class="col-sm-2">
-          <select class="form-select">
-            <option>QI</option>
-            <option>Release</option>
-          </select>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">Category</label>
-        <div class="col-sm-2">
-          <select class="form-select">
-            <option>Shuttle</option>
-            <option>Direct</option>
-          </select>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">Driver</label>
-        <div class="col-sm-3">
-          <input type="text" class="form-control" placeholder="Nama Supir">
-        </div>
-      </div>
-      <div class="row mb-2">
-        <label class="col-sm-2 col-form-label">Loading End</label>
-        <div class="col-sm-3">
-          <input type="datetime-local" class="form-control">
-        </div>
-      </div>
+        <div class="card-body">
+            <form id="formTat">
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Tanggal</label>
+                    <div class="col-sm-3">
+                        <input type="datetime-local" id="tanggal" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Nomor Polisi</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="nopol" class="form-control" placeholder="Contoh: B 1234 ABC" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">User</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="user" class="form-control" placeholder="Nama Admin" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Transporter</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="transporter" class="form-control" placeholder="Nama Vendor Armada" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Tujuan</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="tujuan" class="form-control" placeholder="Lokasi Tujuan" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Shipment</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="shipment" class="form-control" placeholder="4519403296" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Qty Cs</label>
+                    <div class="col-sm-2">
+                        <input type="number" id="qty_cs" class="form-control" placeholder="Jumlah Karton" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Qty Pallet</label>
+                    <div class="col-sm-2">
+                        <input type="number" id="qty_pallet" class="form-control" placeholder="Jumlah Pallet" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">No. Docket</label>
+                    <div class="col-sm-2">
+                        <input type="text" id="no_docket" class="form-control" placeholder="3117465" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">No. Seal</label>
+                    <div class="col-sm-2">
+                        <input type="text" id="no_seal" class="form-control" placeholder="567/568/568" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Channel (Type Order)</label>
+                    <div class="col-sm-2">
+                        <select class="form-select" id="type_order">
+                            <option>MT</option>
+                            <option>SO</option>
+                            <option>STO</option>
+                            <option>STO/JKT</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Status</label>
+                    <div class="col-sm-2">
+                        <select class="form-select" id="status">
+                            <option>QI</option>
+                            <option>Release</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Category</label>
+                    <div class="col-sm-2">
+                        <select class="form-select" id="category">
+                            <option>Shuttle</option>
+                            <option>Direct</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Driver</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="driver" class="form-control" placeholder="Nama Supir" required>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <label class="col-sm-2 col-form-label">Loading End</label>
+                    <div class="col-sm-3">
+                        <input type="datetime-local" id="loading_end" class="form-control" required>
+                    </div>
+                </div>
 
-      <!-- Tombol -->
-      <div class="row mb-2">
-        <div class="col-sm-5 offset-sm-3">
-          <button class="btn btn-primary w-100">Hitung & Simpan</button>
+                <div class="row mt-4">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-primary px-4 py-2 w-100" id="btnSimpan">
+                            <i class="bi bi-cloud-arrow-up me-2"></i>Simpan ke Google Sheets
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
-      </div>
-
-      <!-- Alert Info -->
-      <div class="row">
-        <div class="col-sm-5 offset-sm-3">
-          <div class="alert alert-info mb-0">
-            <strong>Total Waktu Proses:</strong> 01:45:00 | <strong>Status:</strong> Normal
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+    </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbziAZG9GWaHlIvCVSm_W-V8D32U_VVX0oFR_eXMCHW7uWUA0KiX-qRfn3bBRA7br5VrsQ/exec"; 
+
+    // PERBAIKAN: Mengarahkan listener ke formTat yang benar
+    document.getElementById('formTat').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const btn = document.getElementById('btnSimpan');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Menyimpan...';
+
+        // Pembuatan payload JSON target ke tab sheet 'tat'
+        const payload = {
+            formType: "tat", 
+            data: {
+                tanggal: document.getElementById('tanggal').value,
+                nopol: document.getElementById('nopol').value,
+                user: document.getElementById('user').value,
+                transporter: document.getElementById('transporter').value,
+                tujuan: document.getElementById('tujuan').value,
+                shipment: document.getElementById('shipment').value,
+                qty_cs: document.getElementById('qty_cs').value,
+                qty_pallet: document.getElementById('qty_pallet').value,
+                no_docket: document.getElementById('no_docket').value,
+                no_seal: document.getElementById('no_seal').value,
+                type_order: document.getElementById('type_order').value, // PERBAIKAN: Ditambahkan tanda koma (,)
+                status: document.getElementById('status').value,         // PERBAIKAN: Ditambahkan tanda koma (,)
+                category: document.getElementById('category').value,     // PERBAIKAN: Ditambahkan tanda koma (,)
+                driver: document.getElementById('driver').value,
+                loading_end: document.getElementById('loading_end').value
+            }
+        };
+
+        // PERBAIKAN: Mengaktifkan mode CORS kilat
+        fetch(WEB_APP_URL, {
+            method: 'POST',
+            mode: 'cors', 
+            headers: {
+                'Content-Type': 'text/plain;charset=utf-8'
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+        .then(res => {
+            if (res.status === "success") {
+                alert('Sukses! Data TAT Logistik berhasil ditambahkan ke Google Sheets.');
+                document.getElementById('formTat').reset(); 
+            } else {
+                alert('Gagal sistem Google Sheets: ' + res.message);
+            }
+        })
+        .catch(error => {
+            console.error('Terjadi Error:', error);
+            alert('Gagal menyimpan data. Pastikan Apps Script Anda menggunakan kode modifikasi terbaru.');
+        })
+        .finally(() => {
+            btn.disabled = false;
+            btn.innerHTML = '<i class="bi bi-cloud-arrow-up me-2"></i>Simpan ke Google Sheets';
+        });
+    });
+</script>
+</body>
+</html>
