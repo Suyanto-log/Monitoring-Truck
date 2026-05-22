@@ -5,6 +5,10 @@ Proyek sistem pemantauan dan pencatatan data truk untuk mempermudah proses penda
 
 **🔗 Demo Aplikasi:** https://monitoring-truck.vercel.app
 
+## 📊 Data & Laporan Operasional
+Semua data rekapitulasi, laporan harian, dan ringkasan per shift disimpan dan diperbarui di sini:
+👉 **[Google Sheet - Monitoring Truck & Gudang](https://docs.google.com/spreadsheets/d/10-7FJ9Ry_H712e1ZhcToFiGU9KZgBjV-7NvD5Mu8iV0/edit?usp=sharing)**
+
 ---
 
 ## 📋 Deskripsi Proyek
