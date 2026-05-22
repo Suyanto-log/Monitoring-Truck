@@ -1,4 +1,6 @@
 # 🚛 Monitoring Truck
+Bismillah
+Pertaman-tama Saya masih newbie di web programming ini, dan ini adalah prpject pertama saya yg saya coba share, mohon bimbingannya dan masukannya.
 Proyek sistem pemantauan dan pencatatan data truk untuk mempermudah proses pendataan, pelacakan status, dan pelaporan. Aplikasi ini berbasis web sederhana yang dirancang agar mudah diakses dan dioperasikan oleh tim lapangan maupun administrasi.
 
 **🔗 Demo Aplikasi:** https://monitoring-truck.vercel.app
