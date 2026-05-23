@@ -226,7 +226,7 @@
             if (res.status === "success") {
                 alert('Sukses! Data Register Truk berhasil ditambahkan ke Google Sheets.');
                 // PERBAIKAN 2: Mengubah formTat menjadi formRegister agar form ter-reset dengan benar
-                document.getElementById('formRegister').reset(); 
+                document.getElementById('formPutaway').reset(); 
             } else {
                 alert('Gagal sistem Google Sheets: ' + res.message);
             }
