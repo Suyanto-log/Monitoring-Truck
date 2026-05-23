@@ -105,51 +105,78 @@
     <!-- PUTAWAY -->
     <div class="card" id="putaway">
         <div class="card-header bg-white py-3">
-            <h5 class="mb-0 fw-semibold"><i class="bi bi-box-seam"></i> Input Putaway</h5>
+            <h5 class="mb-0 fw-semibold"><i class="bi bi-truck me-2"></i> Form Registrasi</h5>
         </div>
         <div class="card-body">
-            <form id="formPutaway">     
+            <form id="formRegister">
+              
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">Shift</label>
+                    <label class="col-sm-2 col-form-label fw-medium">No Pol</label>
                     <div class="col-sm-3">
-                        <select id="jenis_kendaraan" class="form-select" required>
-                            <option value="">Pilih Shift...</option>
-                            <option value="Malam">Malam</option>
-                            <option value="Pagi">Pagi</option>
-                            <option value="Siang">Siang</option>
-                        </select>
+                        <input type="text" id="nopol" class="form-control" placeholder="Contoh: B 1234 ABC" required>
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">Group</label>
-                    <div class="col-sm-3">
-                        <select id="jenis_kendaraan" class="form-select" required>
-                            <option value="">Pilih Group...</option>
-                            <option value="Group A">A</option>
-                            <option value="Group A">B</option>
-                            <option value="Group A">C</option>
-                        </select>
-                </div>
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">Putaway</label>
-                    <div class="col-sm-3">
-                        <input type="text" id="shipment" class="form-control" placeholder="Qty Pallet">
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">Replanish</label>
+                    <label class="col-sm-2 col-form-label fw-medium">Transporter</label>
                     <div class="col-sm-4">
-                        <input type="text" id="nama_driver" class="form-control" placeholder="Qty CS">
+                        <input type="text" id="transporter" class="form-control" placeholder="Nama Perusahaan Angkutan" required>
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">Tanggal</label>
+                    <label class="col-sm-2 col-form-label fw-medium">Shipment</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="shipment" class="form-control" placeholder="Nomor Shipment">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label fw-medium">Jenis Truck</label>
+                    <div class="col-sm-3">
+                        <select id="jenis_kendaraan" class="form-select" required>
+                            <option value="">Pilih Jenis...</option>
+                            <option value="Wing Box">Wing Box</option>
+                            <option value="Container 40">Container 40</option>
+                            <option value="Container 20">Container 20</option>
+                            <option value="Pick Up">Pick Up</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label fw-medium">Driver</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="nama_driver" class="form-control" placeholder="Nama Lengkap Supir">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label fw-medium">Waktu Kedatangan</label>
                     <div class="col-sm-4">
                         <input type="datetime-local" id="waktu_kedatangan" class="form-control" required>
                     </div>
                 </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label fw-medium">Tujuan</label>
+                    <div class="col-sm-4">
+                        <input type="text" id="tujuan" class="form-control" placeholder="Lokasi Tujuan Gudang">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label fw-medium">Type Order</label>
+                    <div class="col-sm-3">
+                        <select id="type_order" class="form-select" required>
+                            <option value="MT">MT</option>
+                            <option value="SO">SO</option>
+                            <option value="STO">STO</option>
+                            <option value="STO/JKT">STO/JKT</option>
+                        </select>
+                    </div>
+                </div>
+
                 <div class="row mt-4">
                     <div class="col-sm-2"></div>
                     <div class="col-sm-4">
