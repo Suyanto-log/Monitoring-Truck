@@ -20,6 +20,7 @@ Menggunakan Google Sheets sebagai basis data sementara. Sudah berhasil terhubung
 - **Fitur yang sudah berfungsi:**
   - Form Register ✅
   - Form TAT ✅
+  - Form Putaway ✅
 - **Status:** Koneksi berhasil, data masuk ke spreadsheet dengan benar.
 - **Yang perlu disempurnakan:** Validasi input, tampilan, dan aturan pengisian pada kedua form tersebut.
 
