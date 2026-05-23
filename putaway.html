@@ -108,7 +108,7 @@
             <h5 class="mb-0 fw-semibold"><i class="bi bi-truck me-2"></i> Form Registrasi</h5>
         </div>
         <div class="card-body">
-            <form id="formRegister">
+            <form id="formPutaway">
               
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label fw-medium">No Pol</label>
@@ -204,7 +204,7 @@
         btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Menyimpan...';
 
         const payload = {
-            formType: "register", 
+            formType: "putaway", 
             data: {
                 nopol: document.getElementById('nopol').value,
                 transporter: document.getElementById('transporter').value,
