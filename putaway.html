@@ -224,7 +224,7 @@
         .then(response => response.json())
         .then(res => {
             if (res.status === "success") {
-                alert('Sukses! Data Register Truk berhasil ditambahkan ke Google Sheets.');
+                alert('Sukses! Data Putaway berhasil ditambahkan ke Google Sheets.');
                 // PERBAIKAN 2: Mengubah formTat menjadi formRegister agar form ter-reset dengan benar
                 document.getElementById('formPutaway').reset(); 
             } else {
