@@ -111,9 +111,14 @@
             <form id="formPutaway">
               
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">Team</label>
+                    <label class="col-sm-2 col-form-label fw-medium">Group</label>
                     <div class="col-sm-3">
-                        <input type="text" id="team" class="form-control" placeholder="Contoh: B 1234 ABC" required>
+                        <select id="shift" class="form-select" required>
+                            <option value="">Pilih Group...</option>
+                            <option value="Group A">Group A/option>
+                            <option value="Group B">Group B</option>
+                            <option value="Group C">Group C</option>
+                        </select>
                     </div>
                 </div>
 
@@ -122,41 +127,28 @@
                     <div class="col-sm-4">
                         <select id="shift" class="form-select" required>
                             <option value="">Pilih Shift...</option>
-                            <option value="Malam">Malam</option>
-                            <option value="Pagi">Pagi</option>
-                            <option value="Siang">Siang</option>
+                            <option value="DM">Dinas Malam</option>
+                            <option value="DP">Dinas Pagi</option>
+                            <option value="DS">Dinas Siang</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">Shipment</label>
+                    <label class="col-sm-2 col-form-label fw-medium">Putaway</label>
                     <div class="col-sm-3">
-                        <input type="text" id="shipment" class="form-control" placeholder="Nomor Shipment">
+                        <input type="text" id="putaway" class="form-control" placeholder="Qty PAllet">
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">Jenis Truck</label>
-                    <div class="col-sm-3">
-                        <select id="jenis_kendaraan" class="form-select" required>
-                            <option value="">Pilih Jenis...</option>
-                            <option value="Wing Box">Wing Box</option>
-                            <option value="Container 40">Container 40</option>
-                            <option value="Container 20">Container 20</option>
-                            <option value="Pick Up">Pick Up</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">Driver</label>
+                    <label class="col-sm-2 col-form-label fw-medium">Replanish</label>
                     <div class="col-sm-4">
-                        <input type="text" id="nama_driver" class="form-control" placeholder="Nama Lengkap Supir">
+                        <input type="text" id="replanish" class="form-control" placeholder="Qty Cs">
                     </div>
                 </div>
 
-                <div class="row mb-3">
+                <!-- <div class="row mb-3">
                     <label class="col-sm-2 col-form-label fw-medium">Tanggal</label>
                     <div class="col-sm-4">
                         <input type="datetime-local" id="tanggal" class="form-control" required>
@@ -180,7 +172,7 @@
                             <option value="STO/JKT">STO/JKT</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row mt-4">
                     <div class="col-sm-2"></div>
@@ -213,12 +205,12 @@
             data: {
                 team: document.getElementById('team').value,
                 shift: document.getElementById('shift').value,
-                shipment: document.getElementById('shipment').value,
-                jenis_kendaraan: document.getElementById('jenis_kendaraan').value,
-                nama_driver: document.getElementById('nama_driver').value,
-                tanggal: document.getElementById('tanggal').value,
-                tujuan: document.getElementById('tujuan').value,
-                type_order: document.getElementById('type_order').value
+                putaway: document.getElementById('putaway').value,
+                replanish: document.getElementById('replanish').value,
+                //nama_driver: document.getElementById('nama_driver').value,
+                //tanggal: document.getElementById('tanggal').value,
+                //tujuan: document.getElementById('tujuan').value,
+                //type_order: document.getElementById('type_order').value
             }
         };
 
