@@ -111,16 +111,21 @@
             <form id="formPutaway">
               
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">No Pol</label>
+                    <label class="col-sm-2 col-form-label fw-medium">Team</label>
                     <div class="col-sm-3">
-                        <input type="text" id="nopol" class="form-control" placeholder="Contoh: B 1234 ABC" required>
+                        <input type="text" id="team" class="form-control" placeholder="Contoh: B 1234 ABC" required>
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">Transporter</label>
+                    <label class="col-sm-2 col-form-label fw-medium">Shift</label>
                     <div class="col-sm-4">
-                        <input type="text" id="transporter" class="form-control" placeholder="Nama Perusahaan Angkutan" required>
+                        <select id="shift" class="form-select" required>
+                            <option value="">Pilih Shift...</option>
+                            <option value="Malam">Malam</option>
+                            <option value="Pagi">Pagi</option>
+                            <option value="Siang">Siang</option>
+                        </select>
                     </div>
                 </div>
 
@@ -152,9 +157,9 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label fw-medium">Waktu Kedatangan</label>
+                    <label class="col-sm-2 col-form-label fw-medium">Tanggal</label>
                     <div class="col-sm-4">
-                        <input type="datetime-local" id="waktu_kedatangan" class="form-control" required>
+                        <input type="datetime-local" id="tanggal" class="form-control" required>
                     </div>
                 </div>
 
@@ -206,12 +211,12 @@
         const payload = {
             formType: "putaway", 
             data: {
-                nopol: document.getElementById('nopol').value,
-                transporter: document.getElementById('transporter').value,
+                team: document.getElementById('team').value,
+                shift: document.getElementById('shift').value,
                 shipment: document.getElementById('shipment').value,
                 jenis_kendaraan: document.getElementById('jenis_kendaraan').value,
                 nama_driver: document.getElementById('nama_driver').value,
-                waktu_kedatangan: document.getElementById('waktu_kedatangan').value,
+                tanggal: document.getElementById('tanggal').value,
                 tujuan: document.getElementById('tujuan').value,
                 type_order: document.getElementById('type_order').value
             }
