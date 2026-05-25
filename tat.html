@@ -83,10 +83,6 @@
             <h4 class="mb-1 fw-semibold">Selamat Datang, Admin</h4>
             <p class="text-muted mb-0">Pantau proses bongkar muat truk secara real-time</p>
         </div>
-        <div class="d-flex gap-2">
-            <button class="btn btn-outline-primary"><i class="bi bi-bell"></i></button>
-            <button class="btn btn-primary"><i class="bi bi-person-circle"></i> Profil</button>
-        </div>
     </div>
 
     <div class="card" id="tat">
@@ -94,7 +90,28 @@
             <h5 class="mb-0 fw-semibold"><i class="bi bi-clock-history me-2"></i> Pencatatan TAT (Waktu Proses)</h5>
         </div>
         <div class="card-body">
+            
+            <div class="row mb-4 p-3 bg-light rounded border align-items-center">
+                <label class="col-sm-2 col-form-label fw-bold text-primary">No. Registrasi</label>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <input type="text" id="cari_no_reg" class="form-control border-primary" placeholder="Masukkan No. Registrasi">
+                        <button class="btn btn-primary" type="button" id="btnCariReg">
+                            <i class="bi bi-search me-1"></i> Cari Data
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <span id="loadingCari" class="text-muted small d-none">
+                        <span class="spinner-border spinner-border-sm me-1" role="status"></span> Mencari data...
+                    </span>
+                    <span id="statusCari" class="fw-medium small"></span>
+                </div>
+            </div>
+
             <form id="formTat">
+                <input type="hidden" id="no_reg_hidden" value="">
+
                 <div class="row mb-2">
                     <label class="col-sm-2 col-form-label fw-medium">Tanggal</label>
                     <div class="col-sm-3">
@@ -213,9 +230,78 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbziAZG9GWaHlIvCVSm_W-V8D32U_VVX0oFR_eXMCHW7uWUA0KiX-qRfn3bBRA7br5VrsQ/exec"; 
+    // ⚠️ MASUKKAN URL WEB APP CURRENT DEPLOYMENT ANDA DI SINI
+    // Pastikan URL di bawah ini diganti dengan URL hasil deploy terbaru Bapak!
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwHVRVyYsZgL0KsqWcnfqItKQTpMjB1U8iw7s6IlNcZCIkSA2Dc70D567PcjNRrURuOIg/exec"; 
 
-    // PERBAIKAN: Mengarahkan listener ke formTat yang benar
+    document.addEventListener('DOMContentLoaded', function() {
+        const now = new Date();
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        const inputTanggal = document.getElementById('tanggal');
+        if(inputTanggal) { inputTanggal.value = now.toISOString().slice(0,16); }
+
+        document.getElementById('btnCariReg').addEventListener('click', cariDataRegister);
+        document.getElementById('cari_no_reg').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') { e.preventDefault(); cariDataRegister(); }
+        });
+    });
+
+    // =========================================================================
+    // FUNGSI PENJEMPUT DATA UTAMA (JSONP CALLBACK - TERBUKTI AMAN DARI CORS)
+    // =========================================================================
+    function handleGoogleResponse(res) {
+        const loading = document.getElementById('loadingCari');
+        const statusText = document.getElementById('statusCari');
+        const btnCari = document.getElementById('btnCariReg');
+
+        if(loading) loading.classList.add('d-none');
+        if(btnCari) btnCari.disabled = false;
+
+        if (res.status === "success") {
+            const data = res.data;
+            document.getElementById('no_reg_hidden').value = document.getElementById('cari_no_reg').value.trim(); 
+            document.getElementById('nopol').value = data.nopol || '';
+            document.getElementById('transporter').value = data.transporter || '';
+            document.getElementById('driver').value = data.driver || '';
+            document.getElementById('tujuan').value = data.tujuan || '';
+            document.getElementById('shipment').value = data.shipment || '';
+            
+            statusText.innerHTML = `<span class="text-success fw-bold"><i class="bi bi-check-circle-fill"></i> Data ditemukan! Nopol: ${data.nopol}</span>`;
+        } else {
+            statusText.innerHTML = `<span class="text-danger fw-bold"><i class="bi bi-x-circle-fill"></i> ${res.message || 'Data tidak ditemukan.'}</span>`;
+            document.getElementById('no_reg_hidden').value = '';
+        }
+
+        // Bersihkan sisa tag script agar memori laptop tetap ringan
+        const oldScript = document.getElementById('jsonpScript');
+        if(oldScript) oldScript.remove();
+    }
+
+    // =========================================================================
+    // FUNGSI TOMBOL CARI (Melompati Fetch Browser via Jalur Eksternal)
+    // =========================================================================
+    function cariDataRegister() {
+        const noReg = document.getElementById('cari_no_reg').value.trim();
+        if (!noReg) { alert('Silakan masukkan Nomor Registrasi terlebih dahulu.'); return; }
+
+        document.getElementById('loadingCari').classList.remove('d-none');
+        document.getElementById('statusCari').innerHTML = '';
+        document.getElementById('btnCariReg').disabled = true;
+
+        // Hapus sisa pengetukan lama jika ada
+        const oldScript = document.getElementById('jsonpScript');
+        if(oldScript) oldScript.remove();
+
+        // MENYUNTIKKAN PARAMETER LANGSUNG KE HEAD BROWSER (ANTI CORS 100%)
+        const script = document.createElement('script');
+        script.id = 'jsonpScript';
+        script.src = `${WEB_APP_URL}?action=search&no_registrasi=${encodeURIComponent(noReg)}&callback=handleGoogleResponse`;
+        document.body.appendChild(script);
+    }
+
+    // =========================================================================
+    // FUNGSI SIMPAN DATA TAT
+    // =========================================================================
     document.getElementById('formTat').addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -223,10 +309,10 @@
         btn.disabled = true;
         btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Menyimpan...';
 
-        // Pembuatan payload JSON target ke tab sheet 'tat'
         const payload = {
             formType: "tat", 
             data: {
+                no_reg: document.getElementById('no_reg_hidden').value,
                 tanggal: document.getElementById('tanggal').value,
                 nopol: document.getElementById('nopol').value,
                 user: document.getElementById('user').value,
@@ -237,35 +323,33 @@
                 qty_pallet: document.getElementById('qty_pallet').value,
                 no_docket: document.getElementById('no_docket').value,
                 no_seal: document.getElementById('no_seal').value,
-                type_order: document.getElementById('type_order').value, // PERBAIKAN: Ditambahkan tanda koma (,)
-                status: document.getElementById('status').value,         // PERBAIKAN: Ditambahkan tanda koma (,)
-                category: document.getElementById('category').value,     // PERBAIKAN: Ditambahkan tanda koma (,)
+                type_order: document.getElementById('type_order').value, 
+                status: document.getElementById('status').value,         
+                category: document.getElementById('category').value,     
                 driver: document.getElementById('driver').value,
                 loading_end: document.getElementById('loading_end').value
             }
         };
 
-        // PERBAIKAN: Mengaktifkan mode CORS kilat
         fetch(WEB_APP_URL, {
             method: 'POST',
-            mode: 'cors', 
-            headers: {
-                'Content-Type': 'text/plain;charset=utf-8'
-            },
+            mode: 'no-cors',
             body: JSON.stringify(payload)
         })
-        .then(response => response.json())
-        .then(res => {
-            if (res.status === "success") {
-                alert('Sukses! Data TAT Logistik berhasil ditambahkan ke Google Sheets.');
-                document.getElementById('formTat').reset(); 
-            } else {
-                alert('Gagal sistem Google Sheets: ' + res.message);
-            }
+        .then(() => {
+            alert('Sukses! Data TAT Logistik berhasil ditambahkan ke Google Sheets.');
+            document.getElementById('formTat').reset(); 
+            document.getElementById('cari_no_reg').value = '';
+            document.getElementById('statusCari').innerHTML = '';
+            document.getElementById('no_reg_hidden').value = '';
+            
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            document.getElementById('tanggal').value = now.toISOString().slice(0,16);
         })
         .catch(error => {
-            console.error('Terjadi Error:', error);
-            alert('Gagal menyimpan data. Pastikan Apps Script Anda menggunakan kode modifikasi terbaru.');
+            console.error('Error:', error);
+            alert('Gagal memproses simpan.');
         })
         .finally(() => {
             btn.disabled = false;
@@ -273,5 +357,3 @@
         });
     });
 </script>
-</body>
-</html>
